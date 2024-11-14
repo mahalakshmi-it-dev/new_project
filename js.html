@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+ </head>
+ <body>
+ <div id="parent" style="padding: 20px; background-color: lightblue;">
+    Parent Div
+    <button id="childButton">Click Me</button>
+</div>
+
+<script>
+    const parent = document.getElementById('parent');
+    const childButton = document.getElementById('childButton');
+
+    parent.addEventListener('click', function() {
+        alert('Parent clicked!');
+    });
+
+    childButton.addEventListener('click', function(event) {
+        event.stopPropagation();  // Prevent the event from bubbling to parent
+        alert('Child button clicked!');
+    });
+</script>
+  <script type = "text/javascript">
+	function outer (callback) {
+		let count  = 0;
+		console.trace('Trace');
+		function inner() {
+			count++;
+			console.log(count);
+		}
+		
+		return inner;
+	}
+	
+	const myfunc = outer();
+	myfunc();
+	myfunc();
+	
+	console.time('outer');
+// Code block
+console.timeEnd('outer');
+	
+	
+	/*async function fetchProduct (productID) {
+		return productID;
+	}
+	
+	async function fetchInventory(productID) {
+		return 5;
+	}
+	
+	async function checkout(amount) {
+		try
+		{
+			productInfo = await fetchProduct(2);
+			console.log(productInfo);
+			
+			inventoryCheck = await fetchInventory(2);
+			console.log(inventoryCheck);
+		}
+		catch ()
+		{
+		}
+	}*/
+	
+	/*function outer() {
+		var x = 1;
+		return x;
+		return function () {
+			return x;
+		};
+		console.log("function inside:" +x);
+	}
+	//var data = outer();
+	//console.log(data());
+	console.log("function outside:" +outer());*/
+  </script>
+ </body>
+</html>
